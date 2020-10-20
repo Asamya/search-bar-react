@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
+AddTodo.propTypes = {
+    onAdd: PropTypes.func.isRequired,
+}
 
 export default function AddTodo({ onAdd }) {
     const [description, setDescription] = useState('');

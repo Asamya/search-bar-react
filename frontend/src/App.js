@@ -8,9 +8,12 @@ import SearchBar from "./components/SearchBar";
 export default function App() {
     const [todos, create, remove, advance] = useTodos();
     const [searchTerm, setSearchTerm] = useState('');
-    const searchResults = todos
-        .filter((todo) => todo.description.toLowerCase()
-            .includes(searchTerm.toLowerCase()));
+    const [searchResults, setSearchResults] = useState(todos);
+
+    useEffect(() => {
+        setSearchResults(todos
+            .filter((todo) => todo.description.includes(searchTerm)))
+    }, [searchTerm, todos]);
 
     return (
         <Main>
